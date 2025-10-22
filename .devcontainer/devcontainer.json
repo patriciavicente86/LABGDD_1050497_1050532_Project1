@@ -1,0 +1,8 @@
+{
+  "name": "nyc-taxi-offline",
+  "build": { "dockerfile": "../docker/Dockerfile" },
+  "workspaceFolder": "/workspace",
+  "features": {},
+  "postCreateCommand": "pip list && jupyter server --version",
+  "customizations": { "vscode": { "extensions": ["ms-python.python","ms-toolsai.jupyter"] } }
+}

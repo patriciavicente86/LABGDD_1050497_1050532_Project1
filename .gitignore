@@ -1,0 +1,40 @@
+# --- Spark data lake ---
+lake/
+*.parquet
+*.csv
+*.orc
+*.avro
+*.log
+
+# --- Spark checkpoints/temp files ---
+spark-warehouse/
+metastore_db/
+.derby.log
+_temp/
+*.crc
+
+# --- Python ---
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.egg-info/
+*.eggs/
+
+# --- Notebooks and checkpoints ---
+.ipynb_checkpoints/
+*.ipynb~
+
+# --- VSCode ---
+.vscode/
+*.code-workspace
+
+# --- Docker ---
+*.pid
+*.tar
+.env
+.envrc
+
+# --- OS/system files ---
+.DS_Store
+Thumbs.db

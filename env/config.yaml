@@ -1,7 +1,7 @@
-data_root: /workspace/data           # <- RAW inputs live here
-bronze_path: /workspace/lake/bronze  # <- your outputs
-silver_path: /workspace/lake/silver
-gold_path: /workspace/lake/gold
+data_root: ./data           # <- RAW inputs live here
+bronze_path: ./lake/bronze  # <- your outputs
+silver_path: ./lake/silver
+gold_path: ./lake/gold
 years: [2024]
 services: ["yellow","green"]
 dq:

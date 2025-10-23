@@ -1,8 +1,14 @@
 {
   "name": "nyc-taxi-offline",
   "build": { "dockerfile": "../docker/Dockerfile" },
-  "workspaceFolder": "/workspace",
+  "workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}",
+  "containerEnv": {
+    "SPARK_DRIVER_MEMORY": "16g",
+    "SPARK_LOCAL_DIRS": "/tmp",
+    "PYSPARK_SUBMIT_ARGS": "--conf spark.sql.shuffle.partitions=8 --conf spark.sql.files.maxPartitionBytes=128m --conf spark.sql.adaptive.enabled=true --conf spark.driver.maxResultSize=4g pyspark-shell"
+  },
   "features": {},
   "postCreateCommand": "pip list && jupyter server --version",
-  "customizations": { "vscode": { "extensions": ["ms-python.python","ms-toolsai.jupyter"] } }
+  "customizations": { "vscode": { "extensions": ["ms-python.python","ms-toolsai.jupyter"] } },
+  "remoteUser": "root"
 }

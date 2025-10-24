@@ -40,4 +40,4 @@ __pycache__/
 Thumbs.db
 
 # -- Reports --
-reports/
+reports/*

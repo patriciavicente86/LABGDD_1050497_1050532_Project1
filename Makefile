@@ -4,10 +4,10 @@ include make/bench.mk
 include make/pipeline.mk
 
 build:
-\tdocker build -t nyc-taxi-offline -f docker/Dockerfile .
+	docker build -t nyc-taxi-offline -f docker/Dockerfile .
 
 dev:
-\tdocker run --rm -it -p 8888:8888 -v $$PWD:/workspace nyc-taxi-offline bash
+	docker run --rm -it -p 8888:8888 -v $$PWD:/workspace nyc-taxi-offline bash
 
 lab:
-\tjupyter lab --ip=0.0.0.0 --port=8888 --no-browser --NotebookApp.token=''
+	jupyter lab --ip=0.0.0.0 --port=8888 --no-browser --NotebookApp.token=''

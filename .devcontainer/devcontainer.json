@@ -3,7 +3,7 @@
   "build": { "dockerfile": "../docker/Dockerfile" },
   "workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}",
   "containerEnv": {
-    "SPARK_DRIVER_MEMORY": "16g",
+    "SPARK_DRIVER_MEMORY": "8g",
     "SPARK_LOCAL_DIRS": "/tmp",
     "PYSPARK_SUBMIT_ARGS": "--conf spark.sql.shuffle.partitions=8 --conf spark.sql.files.maxPartitionBytes=128m --conf spark.sql.adaptive.enabled=true --conf spark.driver.maxResultSize=4g pyspark-shell"
   },

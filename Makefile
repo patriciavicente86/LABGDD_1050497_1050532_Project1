@@ -1,6 +1,7 @@
 include make/ingest.mk
 include make/validate.mk
 include make/bench.mk
+include make/pipeline.mk
 
 build:
 \tdocker build -t nyc-taxi-offline -f docker/Dockerfile .

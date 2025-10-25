@@ -1,8 +1,9 @@
 # make/pipeline.mk
+SHELL := /bin/bash
 PY ?= python
 CONFIG ?= env/config.yaml
 
-.PHONY: silver gold lambda kappa pipeline all clean metrics compare kappa_start kappa_seed kappa_probe kappa_seed_next
+.PHONY: silver gold lambda kappa pipeline all clean metrics compare kappa_start kappa_seed kappa_probe kappa_seed_next figures
 
 silver:
 	@$(PY) -m src.clean_to_silver --config $(CONFIG)
@@ -49,16 +50,21 @@ kappa_seed_next:
 	for svc in yellow green; do \
 	  src_base="lake/bronze/service=$$svc/year=2024"; \
 	  dst_base="lake/bronze_stream/service=$$svc/year=2024"; \
-	  [ -d "$$src_base" ] || continue; \
+	  [ -d "$$src_base" ] || { echo "Skip $$svc: $$src_base not found"; continue; }; \
 	  mkdir -p "$$dst_base"; \
-	  # pick the first month in source that isn't in stream yet
+	  next=""; src=""; \
 	  for m in $$(ls -d $$src_base/month=* 2>/dev/null | sort); do \
 	    mon=$${m##*/}; \
-	    if [ ! -d "$$dst_base/$$mon" ]; then \
-	      echo "Seeding $$m -> $$dst_base/$$mon"; \
-	      mkdir -p "$$dst_base/$$mon"; \
-	      cp -n "$$m"/*.parquet "$$dst_base/$$mon"/ 2>/dev/null || true; \
-	      break; \
-	    fi; \
+	    if [ ! -d "$$dst_base/$$mon" ]; then next="$$mon"; src="$$m"; break; fi; \
 	  done; \
+	  if [ -n "$$next" ]; then \
+	    echo "Seeding $$src -> $$dst_base/$$next"; \
+	    mkdir -p "$$dst_base/$$next"; \
+	    cp -n "$$src"/*.parquet "$$dst_base/$$next"/ 2>/dev/null || true; \
+	  else \
+	    echo "No new month to seed for $$svc"; \
+	  fi; \
 	done
+
+figures:
+	$(PY) -m src.figures --config $(CONFIG)

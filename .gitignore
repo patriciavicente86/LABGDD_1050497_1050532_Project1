@@ -1,7 +1,6 @@
 # --- Spark data lake ---
 lake/
 *.parquet
-*.csv
 *.orc
 *.avro
 *.log

@@ -1,5 +1,5 @@
-data_root: ./data           # <- RAW inputs live here
-bronze_path: ./lake/bronze  # <- your outputs
+data_root: ./data           # RAW inputs
+bronze_path: ./lake/bronze  # outputs
 silver_path: ./lake/silver
 gold_path: ./lake/gold
 years: [2024]

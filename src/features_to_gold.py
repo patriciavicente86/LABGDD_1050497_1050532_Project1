@@ -1,5 +1,3 @@
-# src/features_to_gold.py
-# GitHub Copilot
 # Read "silver" parquet feature datasets (per service), compute derived features,
 # and write "gold" tables: trip-level features, zone-hour aggregates, OD-hour aggregates.
 

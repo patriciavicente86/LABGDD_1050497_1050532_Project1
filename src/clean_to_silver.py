@@ -1,5 +1,3 @@
-# src/clean_to_silver.py
-# GitHub Copilot
 # ETL script to read Bronze parquet files, clean & validate NYC taxi trips,
 # and write out Silver parquet files partitioned by pickup_date.
 import argparse
